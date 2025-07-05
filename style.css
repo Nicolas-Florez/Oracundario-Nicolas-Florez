@@ -1,0 +1,1036 @@
+/* -----------------------
+   RESET Y CONFIGURACIÓN GENERAL
+------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+/* Fondo de la página principal */
+body {
+    background-image: url('estrella.gif');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #000; /* Fondo negro para complementar */
+    color: white; /* Para que el texto se vea bien */
+  }
+  
+
+  /* -----------------------
+     ENCABEZADO GENERAL
+  ------------------------ */
+  header {
+    text-align: center;
+    background: rgba(137, 43, 226, 0.288);
+    padding: 30px 20px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px #9b27b057;
+    color: #fff;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    letter-spacing: 1.2px;
+  }
+  
+  header h1 {
+    margin-bottom: 10px;
+    font-size: 2.8rem;
+    text-shadow: 0 0 8px #fff;
+  }
+  
+  #mensaje-dia {
+    font-style: italic;
+    color: #d7c9e3;
+    font-size: 1.2rem;
+  }
+  
+  /* -----------------------
+     TARJETAS DEL INICIO
+  ------------------------ */
+  .tarjetas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .tarjeta {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 16px;
+    width: 300px;
+    box-shadow: 0 0 12px #9c27b0cc;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #f3e6ff;
+    font-family: 'Georgia', serif;
+    border: 1px solid #9c27b0bb;
+  }
+  
+  .tarjeta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px #d06cffdd;
+    cursor: pointer;
+  }
+  
+  /* -----------------------
+     BOTONES GENERALES
+  ------------------------ */
+  .boton {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background-color: #9c27b0;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 8px #9c27b0cc;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.05em;
+  }
+  
+  .boton:hover {
+    background-color: #b850d3;
+    box-shadow: 0 0 20px #d06cffdd;
+  }
+  
+  .boton.guardar {
+    background-color: #8bc34a;
+    box-shadow: 0 0 8px #8bc34aaa;
+  }
+  
+  .boton.guardar:hover {
+    background-color: #6ca22f;
+    box-shadow: 0 0 20px #6ca22fdd;
+  }
+  
+  /* -----------------------
+     CALENDARIO
+  ------------------------ */
+  .calendario {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(28, 17, 42, 0.85);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #9c27b0bb;
+    color: #e0dfe7;
+    font-family: 'Georgia', serif;
+    user-select: none;
+  }
+  
+  .calendario h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2.2em;
+    text-shadow: 0 0 10px #d06cffcc;
+  }
+  
+  .mes-actual {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #d3baff;
+    text-shadow: 0 0 5px #a67bffbb;
+  }
+  
+  .grid-calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+  }
+  
+  .grid-calendario .dia {
+    background: linear-gradient(145deg, #654ea3, #eaafc8);
+    padding: 18px 0;
+    text-align: center;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #fff;
+    box-shadow:
+      inset 0 0 8px #fff3,
+      0 0 10px #d06cffbb;
+    transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+    position: relative;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    user-select: none;
+  }
+  
+  .grid-calendario .dia:hover:not(.bloqueado) {
+    transform: scale(1.1);
+    background: linear-gradient(145deg, #8e64ff, #f5a1ff);
+    box-shadow:
+      inset 0 0 12px #fff8,
+      0 0 20px #f0a6ffcc;
+  }
+  
+  .grid-calendario .dia.visto {
+    background: linear-gradient(145deg, #ffecb3, #ffda61);
+    color: #5a3e00;
+    box-shadow:
+      inset 0 0 12px #ffd700cc,
+      0 0 15px #ffd700bb;
+  }
+  
+  .grid-calendario .dia.bloqueado {
+    background-color: #382c4a;
+    color: #7b6f8b;
+    cursor: default;
+    pointer-events: none;
+    border: 1.5px solid #5d5277;
+    box-shadow: none;
+    font-style: italic;
+    user-select: none;
+  }
+  
+  /* Modal para frase */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 6, 29, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+  }
+  
+  .modal.oculto {
+    display: none;
+  }
+  
+  .modal-contenido {
+    position: relative;
+    background: linear-gradient(135deg, #4b367c, #7a5299);
+    padding: 35px 30px 30px 30px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    color: #e0dfe7;
+    box-shadow: 0 0 30px #b47cffcc;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    user-select: none;
+    letter-spacing: 0.02em;
+    font-size: 1.2rem;
+  }
+  
+  .modal-contenido .cerrar {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 8px 14px;
+    font-size: 16px;
+    background-color: #f44336cc;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 8px #f44336cc;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    z-index: 10;
+  }
+  
+  
+  .modal-contenido .cerrar:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Contador */
+  #contador-frase {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 25px;
+    font-size: 1.15em;
+    color: #d3baff;
+    text-shadow: 0 0 6px #a67bffbb;
+  }
+  
+  /* -------- DIARIO -------- */
+  .diario {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(28, 17, 42, 0.85);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #9c27b0bb;
+    color: #e0dfe7;
+    font-family: 'Georgia', serif;
+  }
+  
+  .diario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    color: #d3baff;
+    text-shadow: 0 0 7px #a67bffbb;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #7b4397;
+    resize: vertical;
+    font-size: 1em;
+    margin-bottom: 20px;
+    background-color: #eee7ff;
+    box-shadow: inset 2px 2px 8px rgba(123, 67, 151, 0.3);
+    font-family: 'Georgia', serif;
+    color: #4b367c;
+  }
+  
+  /* Historial */
+  .historial {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .nota-item {
+    background: linear-gradient(145deg, #654ea3, #eaafc8);
+    border-left: 6px solid #d06cff;
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow:
+      inset 0 0 12px #d06cffcc,
+      0 0 15px #9c27b0cc;
+    color: #fff;
+    position: relative;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    font-weight: 600;
+  }
+  
+  .nota-item h4 {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    color: #f3e6ff;
+  }
+  
+  .nota-item p {
+    font-size: 1em;
+    color: #e0dfe7;
+    white-space: pre-wrap;
+  }
+  
+  /* Botones de acción en notas */
+  .botones-nota {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .boton-accion {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #d3baffcc;
+    transition: color 0.3s;
+    user-select: none;
+  }
+  
+  .boton-accion:hover {
+    color: #fff;
+  }
+  
+  .boton-accion.editar {
+    color: #7b4397cc;
+  }
+  
+  .boton-accion.editar:hover {
+    color: #4b367c;
+  }
+  
+  .boton-accion.eliminar {
+    color: #dc2430cc;
+  }
+  
+  .boton-accion.eliminar:hover {
+    color: #f44336;
+  }
+  
+  /* Botón flotante para añadir nota */
+  #btn-flotante {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 56px;
+    height: 56px;
+    font-size: 34px;
+    font-weight: bold;
+    background-color: #9c27b0;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 20px #d06cffcc;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+  }
+  
+  #btn-flotante:hover {
+    background-color: #b850d3;
+    box-shadow: 0 0 30px #f0a6ffcc;
+  }
+  
+  /* Botón volver al inicio */
+  .boton.volver-inicio {
+    display: block;
+    margin: 30px auto 0;
+    background-color: #7b4397;
+    text-align: center;
+    box-shadow: 0 0 12px #9c27b0cc;
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 14px;
+    padding: 12px 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .boton.volver-inicio:hover {
+    background-color: #592f7f;
+    box-shadow: 0 0 22px #b850d3cc;
+  }
+  
+
+  footer{
+    text-align: center;
+    margin: 100px;
+  }
+
+  /* Animaciones fade para modal */
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  
+  @keyframes fadeOut {
+    from {opacity: 1; transform: translateY(0);}
+    to {opacity: 0; transform: translateY(-10px);}
+  }
+  
+  /* Días vacíos para alinear */
+  .dia-vacio {
+    background: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+  
+  /* Añade efecto astral en días y modal con sombras suaves, colores morados o azules */
+  .dia {
+    box-shadow: 0 0 8px rgba(128, 0, 128, 0.3);
+    border-radius: 8px;
+    color: #4b0082;
+    font-weight: 700;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .dia.desbloqueado:hover {
+    box-shadow: 0 0 12px #8a2be2;
+    background-color: #ede7f6;
+  }
+  
+  .modal-contenido {
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    color: white;
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.8);
+    border-radius: 16px;
+  }
+  
+  #cerrar-modal {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #cerrar-modal:hover {
+    background-color: rgba(255,255,255,0.4);
+  }
+  
+  
+  /* Contador estilo más místico */
+  #contador-frase {
+    font-style: italic;
+    font-weight: 600;
+    color: #d1c4e9;
+    text-shadow: 0 0 6px #7e57c2;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  
+
+  /* Modal para crear/editar nota */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(28, 17, 42, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(6px);
+  }
+  
+  .modal.oculto {
+    display: none;
+  }
+  
+  .modal-contenido {
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    color: white;
+    padding: 25px 30px 30px 30px;
+    border-radius: 16px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 0 30px #b47cffcc;
+    position: relative;
+    font-family: 'Georgia', serif;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  #cerrar-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    line-height: 1;
+  }
+  
+  #cerrar-modal:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  #titulo-nota {
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif;
+    color: #4b367c;
+  }
+  
+  #contenido-nota {
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    resize: vertical;
+    color: #4b367c;
+  }
+  
+  #guardar-modal-nota {
+    align-self: center;
+    width: 120px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Modal para frase */
+.modal.modal-frase {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 6, 29, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+  }
+  
+  .modal.modal-frase.oculto {
+    display: none;
+  }
+  
+  .modal.modal-frase .modal-contenido {
+    position: relative;
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    padding: 35px 30px 30px 30px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    color: #e0dfe7;
+    box-shadow: 0 0 30px #b47cffcc;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    user-select: none;
+    letter-spacing: 0.02em;
+    font-size: 1.2rem;
+  }
+  
+  /* Botón cerrar modal de frases con equis */
+  .modal.modal-frase .cerrar-frase {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+    color: #f44336cc;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 10px;
+    line-height: 1;
+    border-radius: 8px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    user-select: none;
+    box-shadow: 0 0 8px #f44336cc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal.modal-frase .cerrar-frase:hover {
+    color: #d32f2f;
+    background-color: rgba(244, 67, 54, 0.15);
+  }
+  
+  /* Contador frase estilo místico */
+  #contador-frase {
+    font-style: italic;
+    font-weight: 600;
+    color: #d1c4e9;
+    text-shadow: 0 0 6px #7e57c2;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  
+  #monedas {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+    text-shadow: 0 0 6px #fff176, 0 0 10px #fbc02d;
+    font-family: 'Georgia', serif;
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #fbc02d88;
+  }
+  
+  .tienda {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(28, 17, 42, 0.85);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #9c27b0bb;
+    color: #e0dfe7;
+    font-family: 'Georgia', serif;
+    text-align: center;
+  }
+  
+  .lista-frases {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .frase-item {
+    background: linear-gradient(135deg, #654ea3, #eaafc8);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 15px #b47cff88;
+    font-size: 1.1rem;
+    position: relative;
+  }
+  
+  .frase-item p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .frase-item .comprar {
+    background-color: #ffc107;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .frase-item .comprar:hover {
+    background-color: #ff9800;
+  }
+  
+  .ruleta-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(28, 17, 42, 0.85);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #9c27b0bb;
+    color: #e0dfe7;
+    font-family: 'Georgia', serif;
+    text-align: center;
+  }
+  
+  .ruleta-container h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px #b47cff;
+  }
+  
+  #resultado {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ffe082;
+    text-shadow: 0 0 4px #ffeb3b88;
+  }
+
+  .ruleta-visual {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 30px auto;
+  }
+  
+  .ruleta {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    position: relative;
+    transform: rotate(0deg);
+    transition: transform 4s ease;
+  }
+  
+  .seccion {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: #d1c4e9;
+    transform-origin: 100% 100%;
+    clip-path: polygon(100% 100%, 0 100%, 100% 0);
+    text-align: center;
+    line-height: 3.5;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #4a148c;
+  }
+  
+  .s1 { transform: rotate(0deg); background-color: #fdd835; }
+  .s2 { transform: rotate(51.4deg); background-color: #81d4fa; }
+  .s3 { transform: rotate(102.8deg); background-color: #aed581; }
+  .s4 { transform: rotate(154.2deg); background-color: #f06292; }
+  .s5 { transform: rotate(205.6deg); background-color: #b0bec5; }
+  .s6 { transform: rotate(257deg); background-color: #ba68c8; }
+  .s7 { transform: rotate(308.4deg); background-color: #ffd54f; }
+  
+  .puntero {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #fff176;
+    text-shadow: 0 0 5px #fbc02d;
+  }
+  
+  .logros {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(28, 17, 42, 0.85);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #9c27b0bb;
+    font-family: 'Georgia', serif;
+    color: #e0dfe7;
+    text-align: center;
+  }
+  
+  .lista-logros {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .logro-item {
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 1.1rem;
+    color: #ccc;
+    box-shadow: 0 0 10px #00000044;
+  }
+  
+  .logro-item.completado {
+    background: linear-gradient(145deg, #81c784, #aed581);
+    color: #2e7d32;
+    font-weight: bold;
+    box-shadow: 0 0 15px #66bb6a;
+  }
+
+  .racha-flotante {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    background-color: #ffcc80;
+    color: #5d4037;
+    padding: 10px 16px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #ffa726;
+    font-weight: bold;
+    z-index: 999;
+    font-family: 'Georgia', serif;
+  }
+
+  .boton-flotante-externo {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: #673ab7;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 24px;
+    box-shadow: 0 0 12px #512da8;
+    font-weight: bold;
+    z-index: 999;
+    font-family: 'Georgia', serif;
+    text-decoration: none;
+  }
+  
+  .boton-flotante-externo a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .boton-flotante-externo:hover {
+    background: #5e35b1;
+  }
+
+  .significado-nombre {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(28, 17, 42, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #9c27b0bb;
+    text-align: center;
+    color: #e0dfe7;
+    font-family: 'Georgia', serif;
+  }
+  
+  .input-nombre {
+    padding: 12px;
+    font-size: 1.2rem;
+    width: 80%;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .resultado-nombre {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #fff9c4;
+    text-shadow: 0 0 4px #ffeb3b;
+  }
+  
+  /* -----------------------
+   ESTILOS RESPONSIVOS
+------------------------ */
+
+@media (max-width: 1024px) {
+  .tarjetas-container {
+    gap: 20px;
+  }
+
+  .tarjeta {
+    width: 45%;
+  }
+
+  .ruleta-visual {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  #mensaje-dia {
+    font-size: 1rem;
+  }
+
+  .tarjeta {
+    width: 100%;
+  }
+
+  .modal-contenido {
+    font-size: 1.1rem;
+    padding: 25px 20px;
+  }
+
+  #titulo-nota, #contenido-nota {
+    font-size: 1rem;
+  }
+
+  .ruleta-visual {
+    width: 180px;
+    height: 180px;
+  }
+
+  .grid-calendario {
+    gap: 8px;
+  }
+
+  .grid-calendario .dia {
+    padding: 12px 0;
+    font-size: 0.9rem;
+  }
+
+  .nota-item {
+    font-size: 0.95rem;
+    padding: 14px;
+  }
+
+  .diario, .calendario, .tienda, .logros, .significado-nombre {
+    padding: 20px 15px;
+  }
+
+  textarea {
+    height: 150px;
+    font-size: 0.95rem;
+  }
+
+  .input-nombre {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .boton {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  .boton-flotante-externo, .racha-flotante {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 20px 10px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .tarjeta {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .grid-calendario {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .modal-contenido {
+    font-size: 1rem;
+  }
+
+  .boton {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+
+  .boton-flotante-externo {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .nota-item {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .botones-nota {
+    top: 10px;
+    right: 10px;
+  }
+
+  #btn-flotante {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+  }
+
+  .ruleta-visual {
+    width: 150px;
+    height: 150px;
+  }
+
+  #monedas {
+    font-size: 1rem;
+    padding: 6px 16px;
+  }
+}

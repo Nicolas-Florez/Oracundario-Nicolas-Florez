@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🔠 Significado de tu Nombre</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="significado-nombre">
+    <h2>🔠 Descubre el significado de tu nombre</h2>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre..." class="input-nombre">
+    <button id="buscar" class="boton">Buscar en línea</button>
+    <a href="index.html" class="boton volver-inicio">← Volver al inicio</a>
+  </div>
+
+  <script>
+    document.getElementById("buscar").addEventListener("click", () => {
+      const nombre = document.getElementById("nombre").value.trim();
+      if (!nombre) {
+        alert("⚠️ Por favor, escribe un nombre.");
+        return;
+      }
+      const query = `significado del nombre ${encodeURIComponent(nombre)}`;
+      const url = `https://www.google.com/search?q=${query}`;
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>

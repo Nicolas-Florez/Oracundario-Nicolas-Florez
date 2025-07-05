@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio | Frases Motivacionales</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>🌟 Bienvenido al ORACUNDARIO</h1>
+    <p id="mensaje-dia">"Cada día es una nueva oportunidad para brillar."</p>
+  </header>
+
+  <main class="tarjetas-container">
+    <div class="tarjeta">
+      <h2>📅 Calendario de Frases</h2>
+      <p>Explora frases motivacionales cada día.</p>
+      <a href="calendario.html" class="boton">Ir al Calendario</a>
+    </div>
+
+    <div class="tarjeta">
+      <h2>📓 Tu Diario Personal</h2>
+      <p>Escribe tus pensamientos, metas y reflexiones.</p>
+      <a href="diario.html" class="boton">Ir al Diario</a>
+    </div>
+
+    <div class="tarjeta">
+      <h2>🛒 Tienda de Frases</h2>
+      <p>Desbloquea frases premium con tus monedas.</p>
+      <a href="tienda.html" class="boton">Ir a la Tienda</a>
+    </div>
+  
+    <div class="tarjeta">
+      <h2>🎰 Ruleta de la Suerte</h2>
+      <p>Gira una vez al día para ganar monedas o frases premium.</p>
+      <a href="ruleta.html" class="boton">Ir a la Ruleta</a>
+    </div>
+  
+    <div class="tarjeta">
+      <h2>🏅 Logros</h2>
+      <p>Descubre tus avances, rachas y desbloqueos.</p>
+      <a href="logros.html" class="boton">Ver logros</a>
+    </div>
+    
+    <div class="tarjeta">
+      <h2>🔠 Significado de tu Nombre</h2>
+      <p>Descubre el origen y sentido oculto detrás de tu nombre.</p>
+      <a href="nombre-significado.html" class="boton">Explorar</a>
+    </div>
+      
+
+  </main>
+
+  <div class="boton-flotante-externo">
+    <a href="https://labyrinthos.co/pages/one-card-tarot" target="_blank">🎴 Carta del día</a>
+  </div>
+  
+
+  <div id="racha-dias" class="racha-flotante">🔥 Racha: 0 días</div>
+<script>
+  function obtenerRacha() {
+    const hoy = new Date();
+    let racha = 0;
+    for (let i = 0; i < 30; i++) {
+      const dia = new Date(hoy);
+      dia.setDate(hoy.getDate() - i);
+      const clave = "nota_frase_" + dia.getDate();
+      if (localStorage.getItem(clave)) {
+        racha++;
+      } else {
+        break;
+      }
+    }
+    return racha;
+  }
+
+  document.getElementById("racha-dias").textContent = "🔥 Racha: " + obtenerRacha() + " días";
+</script>
+
+
+  <footer>
+    <p>Hecho con ❤️ para inspirarte cada día</p>
+  </footer>
+</body>
+</html>

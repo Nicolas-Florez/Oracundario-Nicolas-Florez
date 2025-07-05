@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario de Frases</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calendario">
+        <h2>📅 Calendario de Frases Diarias</h2>
+        <p id="mes-actual" class="mes-actual"></p> 
+        <p id="monedas" class="monedas">💰 Monedas: 0</p>
+        <p id="contador-frase"></p>
+        <div class="grid-calendario" id="grid-calendario"></div>
+        <a href="index.html" class="boton volver-inicio">← Volver al inicio</a>
+      </div>
+      
+
+<div class="modal modal-frase oculto" id="modal-frase">
+    <div class="modal-contenido">
+        <button id="cerrar-modal" class="cerrar-frase">✖</button>
+      <div id="contador-frase"></div>
+      <p id="texto-frase"></p>
+    </div>
+  </div>
+  
+      
+  <script src="calendario.js"></script>
+</body>
+</html>
