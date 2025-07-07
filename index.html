@@ -12,6 +12,8 @@
     <p id="mensaje-dia">"Cada día es una nueva oportunidad para brillar."</p>
   </header>
 
+  <motiva-pet estado="feliz"></motiva-pet>
+
   <main class="tarjetas-container">
     <div class="tarjeta">
       <h2>📅 Calendario de Frases</h2>
@@ -56,6 +58,7 @@
     <a href="https://labyrinthos.co/pages/one-card-tarot" target="_blank">🎴 Carta del día</a>
   </div>
   
+  
 
   <div id="racha-dias" class="racha-flotante">🔥 Racha: 0 días</div>
 <script>
@@ -77,10 +80,44 @@
 
   document.getElementById("racha-dias").textContent = "🔥 Racha: " + obtenerRacha() + " días";
 </script>
+<script type="module" src="motiva-pet.js"></script>
 
 
-  <footer>
-    <p>Hecho con ❤️ para inspirarte cada día</p>
-  </footer>
+<div id="audio-toggle" class="boton-audio">🎵</div>
+<audio id="audio-fondo" loop>
+  <source src="musica.mp3" type="audio/mpeg" />
+  Tu navegador no soporta audio.
+</audio>
+
+
+<!-- Musica -->
+<script>
+  const audio = document.getElementById("audio-fondo");
+  const toggle = document.getElementById("audio-toggle");
+
+  // Comprobar preferencia guardada
+  if (localStorage.getItem("musica_activa") === "true") {
+    audio.play();
+    toggle.textContent = "🔊";
+  }
+
+  toggle.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      toggle.textContent = "🔊";
+      localStorage.setItem("musica_activa", "true");
+    } else {
+      audio.pause();
+      toggle.textContent = "🎵";
+      localStorage.setItem("musica_activa", "false");
+    }
+  });
+</script>
+<!-- Fin Musica -->
+
 </body>
+<footer>
+  <p>Hecho con ❤️ para inspirarte cada día</p>
+</footer> 
+
 </html>

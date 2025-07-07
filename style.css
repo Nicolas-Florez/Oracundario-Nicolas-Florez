@@ -1034,3 +1034,52 @@ body {
     padding: 6px 16px;
   }
 }
+
+motiva-pet {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.racha-flotante {
+  animation: pulso 2s infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+body {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.boton-audio {
+  position: fixed;
+  bottom: 5rem;
+  left: 1rem;
+  font-size: 1.8rem;
+  background: #ffffffcc;
+  border-radius: 50%;
+  padding: 0.5rem 0.7rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+.boton-audio:hover {
+  transform: scale(1.1);
+}
