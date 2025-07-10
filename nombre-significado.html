@@ -1,30 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🔠 Significado de tu Nombre</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Acrósticos Místicos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="styles.css">
+    <link rel="preconnect" href="styles.css" crossorigin>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-  <div class="significado-nombre">
-    <h2>🔠 Descubre el significado de tu nombre</h2>
-    <input type="text" id="nombre" placeholder="Escribe tu nombre..." class="input-nombre">
-    <button id="buscar" class="boton">Buscar en línea</button>
-    <a href="index.html" class="boton volver-inicio">← Volver al inicio</a>
-  </div>
+    <header>
+        <h1>✨ Generador de Acrósticos Místicos ✨</h1>
+        <p id="mensaje-dia">Crea poemas únicos con la magia de las palabras</p>
+    </header>
 
-  <script>
-    document.getElementById("buscar").addEventListener("click", () => {
-      const nombre = document.getElementById("nombre").value.trim();
-      if (!nombre) {
-        alert("⚠️ Por favor, escribe un nombre.");
-        return;
-      }
-      const query = `significado del nombre ${encodeURIComponent(nombre)}`;
-      const url = `https://www.google.com/search?q=${query}`;
-      window.open(url, "_blank");
-    });
-  </script>
+    <main>
+        <!-- Formulario para crear acróstico -->
+        <div class="tarjeta acrostico-form">
+            <h2>🌟 Crear Acróstico</h2>
+            <div class="form-group">
+                <label for="palabra-input">Escribe Tu Nombre:</label>
+                <input type="text" id="palabra-input" placeholder="Ej: Jhoxman" maxlength="20">
+                <small class="ayuda-texto">Máximo 20 caracteres</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="tema-select">Selecciona un tema:</label>
+                <select id="tema-select">
+                    <option value="amor">💕 Amor</option>
+                    <option value="naturaleza">🌿 Naturaleza</option>
+                    <option value="esperanza">⭐ Esperanza</option>
+                    <option value="libertad">🦋 Libertad</option>
+                    <option value="mistico">🔮 Místico</option>
+                    <option value="aventura">🗺️ Aventura</option>
+                </select>
+            </div>
+
+            <button class="boton" id="generar-btn">🎭 Generar Acróstico</button>
+            <div id="error-mensaje" class="error-oculto"></div>
+        </div>
+
+        <!-- Área de visualización del acróstico -->
+        <div class="tarjeta acrostico-display" id="acrostico-display" style="display: none;">
+            <h2>📜 Tu Acróstico</h2>
+            <div class="acrostico-contenido" id="acrostico-contenido"></div>
+            <div class="botones-accion">
+                <button class="boton" id="copiar-btn">📋 Copiar</button>
+                <button class="boton guardar" id="guardar-btn">💾 Guardar</button>
+                <button class="boton" id="nuevo-btn">🔄 Nuevo</button>
+                <a href="https://www.facebook.com/"><button class="boton" id="nuevo-btn">📩 Compartir</button></a>
+                <a href="index.html"><button class="boton" id="copiar-btn">🚪 Volver</button></a>
+            </div>
+        </div>
+
+        <!-- Historial de acrósticos guardados -->
+        <div class="tarjeta historial-section">
+            <h2>📚 Acrósticos Guardados</h2>
+            <div id="historial-lista" class="historial">
+                <p class="historial-vacio">No hay acrósticos guardados aún. ¡Crea tu primer acróstico!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para confirmaciones -->
+    <div id="modal" class="modal oculto">
+        <div class="modal-contenido">
+            <p id="modal-texto"></p>
+            <button class="cerrar" id="cerrar-modal">Cerrar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>✨ Generador de Acrósticos Místicos - Donde las palabras cobran vida ✨</p>
+    </footer>
+
+    <script src="nombre.js"></script>
 </body>
 </html>

@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+/* Fondo de la página principal */
+body {
+    background-image: url('./assets/estrella.gif');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #000; /* Fondo negro para complementar */
+    color: white; /* Para que el texto se vea bien */
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+
+  /* -----------------------
+     ENCABEZADO GENERAL
+  ------------------------ */
+  header {
+    text-align: center;
+    background: rgba(137, 43, 226, 0.288);
+    padding: 30px 20px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px #9b27b057;
+    color: #fff;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    letter-spacing: 1.2px;
+  }
+  
+  header h1 {
+    margin-bottom: 10px;
+    font-size: 2.8rem;
+    text-shadow: 0 0 8px #fff;
+  }
+  
+  #mensaje-dia {
+    font-style: italic;
+    color: #d7c9e3;
+    font-size: 1.2rem;
+  }
+  
+  /* -----------------------
+     TARJETAS PRINCIPALES
+  ------------------------ */
+  .tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    box-shadow: 0 0 12px #9c27b0cc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #f3e6ff;
+    font-family: 'Georgia', serif;
+    border: 1px solid #9c27b0bb;
+  }
+  
+  .tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #d06cffdd;
+  }
+
+  .tarjeta h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #d3baff;
+    text-shadow: 0 0 10px #a67bffbb;
+  }
+  
+  /* -----------------------
+     FORMULARIO
+  ------------------------ */
+  .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #d3baff;
+    text-shadow: 0 0 5px #a67bffbb;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #7b4397;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #4b367c;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    box-shadow: inset 2px 2px 8px rgba(123, 67, 151, 0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #9c27b0;
+    box-shadow: inset 2px 2px 8px rgba(123, 67, 151, 0.3), 0 0 8px #9c27b0cc;
+  }
+
+  .ayuda-texto {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #d7c9e3;
+    font-style: italic;
+  }
+
+  /* -----------------------
+     ÁREA DE ACRÓSTICO
+  ------------------------ */
+  .acrostico-contenido {
+    width: 100%;
+    background: rgba(75, 54, 124, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #9c27b0bb;
+    margin-bottom: 20px;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    line-height: 1.8;
+    box-shadow: inset 0 0 15px rgba(156, 39, 176, 0.2);
+  }
+
+  .acrostico-linea {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+  }
+
+  .letra-inicial {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #d06cff;
+    text-shadow: 0 0 10px #d06cffcc;
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: center;
+  }
+
+  .verso {
+    color: #e0dfe7;
+    font-style: italic;
+    text-shadow: 0 0 5px rgba(224, 223, 231, 0.3);
+  }
+
+  /* -----------------------
+     BOTONES GENERALES
+  ------------------------ */
+  .boton {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: #9c27b0;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 8px #9c27b0cc;
+    font-family: sans-serif;
+    font-size: 1rem;
+  }
+  
+  .boton:hover {
+    background-color: #b850d3;
+    box-shadow: 0 0 20px #d06cffdd;
+  }
+  
+  .boton.guardar {
+    background-color: #8bc34a;
+    box-shadow: 0 0 8px #8bc34aaa;
+  }
+  
+  .boton.guardar:hover {
+    background-color: #6ca22f;
+    box-shadow: 0 0 20px #6ca22fdd;
+  }
+
+  .botones-accion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  /* -----------------------
+     HISTORIAL
+  ------------------------ */
+  .historial {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .historial-vacio {
+    text-align: center;
+    color: #d7c9e3;
+    font-style: italic;
+    padding: 20px;
+  }
+
+  .historial-item {
+    background: linear-gradient(145deg, #654ea3, #eaafc8);
+    border-left: 6px solid #d06cff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(156, 39, 176, 0.3);
+    color: #fff;
+    position: relative;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  }
+
+  .historial-item h4 {
+    margin-bottom: 10px;
+    color: #f3e6ff;
+    font-size: 1.2rem;
+  }
+
+  .historial-item .fecha {
+    font-size: 0.9rem;
+    color: #d7c9e3;
+    margin-bottom: 15px;
+  }
+
+  .historial-item .acrostico-preview {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e0dfe7;
+  }
+
+  .historial-item .botones-item {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .boton-historial {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .boton-historial:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .boton-historial.eliminar {
+    background: rgba(244, 67, 54, 0.3);
+  }
+
+  .boton-historial.eliminar:hover {
+    background: rgba(244, 67, 54, 0.5);
+  }
+
+  /* -----------------------
+     MODAL
+  ------------------------ */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 6, 29, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+  }
+  
+  .modal.oculto {
+    display: none;
+  }
+  
+  .modal-contenido {
+    position: relative;
+    background: linear-gradient(135deg, #4b367c, #7a5299);
+    padding: 35px 30px 30px 30px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    color: #e0dfe7;
+    box-shadow: 0 0 30px #b47cffcc;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    letter-spacing: 0.02em;
+    font-size: 1.2rem;
+  }
+  
+  .modal-contenido .cerrar {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 8px 14px;
+    font-size: 16px;
+    background-color: #f44336cc;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 8px #f44336cc;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-contenido .cerrar:hover {
+    background-color: #d32f2f;
+  }
+
+  /* -----------------------
+     ERRORES Y ESTADOS
+  ------------------------ */
+  .error-oculto {
+    display: none;
+  }
+
+  .error-mensaje {
+    background: rgba(244, 67, 54, 0.2);
+    color: #ffcdd2;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid #f44336;
+    font-size: 0.9rem;
+  }
+
+  /* -----------------------
+     RESPONSIVE
+  ------------------------ */
+  @media (max-width: 768px) {
+    body {
+      padding: 10px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    .tarjeta {
+      padding: 20px;
+    }
+
+    .acrostico-linea {
+      font-size: 1.1rem;
+    }
+
+    .letra-inicial {
+      font-size: 1.3rem;
+    }
+
+    .botones-accion {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .boton {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+
+  /* -----------------------
+     ANIMACIONES
+  ------------------------ */
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  
+  @keyframes fadeOut {
+    from {opacity: 1; transform: translateY(0);}
+    to {opacity: 0; transform: translateY(-10px);}
+  }
+
+  /* Scroll personalizado */
+  .historial::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .historial::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .historial::-webkit-scrollbar-thumb {
+    background: #9c27b0;
+    border-radius: 4px;
+  }
+
+  .historial::-webkit-scrollbar-thumb:hover {
+    background: #b850d3;
+  }
