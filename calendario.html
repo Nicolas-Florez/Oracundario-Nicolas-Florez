@@ -13,19 +13,42 @@
         <p id="monedas" class="monedas">💰 Monedas: 0</p>
         <p id="contador-frase"></p>
         <div class="grid-calendario" id="grid-calendario"></div>
-        <a href="index.html" class="boton volver-inicio">← Volver al inicio</a>
       </div>
       
 
-<div class="modal modal-frase oculto" id="modal-frase">
+<div class="modal modal-frase oculto" id="modal-frase-cal">
     <div class="modal-contenido">
-        <button id="cerrar-modal" class="cerrar-frase">✖</button>
+        <button id="cerrar-modal-cal" class="cerrar-frase">✖</button>
       <div id="contador-frase"></div>
       <p id="texto-frase"></p>
     </div>
   </div>
+ 
   
-      
+  <div class="diario">
+    <h2>📝 Tu Diario de Motivación</h2>
+
+    <div id="historial-notas" class="historial">
+
+    </div>
+
+    <a href="index.html" class="boton volver-inicio">← Volver al inicio</a>
+
+
+    <button id="btn-flotante">+</button>
+  </div>
+
+
+  <div id="modal-nota" class="modal oculto">
+    <div class="modal-contenido">
+      <button id="cerrar-modal" title="Cerrar">×</button>
+      <h3 id="titulo-modal">Nueva Nota</h3>
+      <input type="text" id="titulo-nota" placeholder="Título de la nota" maxlength="50" />
+      <textarea id="contenido-nota" placeholder="Escribe tu nota aquí..." rows="6"></textarea>
+      <button class="boton guardar" id="guardar-modal-nota">Guardar</button>
+    </div>
+  </div>
+
   <script src="./scripts/calendario.js"></script>
 </body>
 </html>

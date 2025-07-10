@@ -122,7 +122,7 @@ body {
   ------------------------ */
   .calendario {
     max-width: 700px;
-    margin: 0 auto;
+    margin: 20px auto;
     background: rgba(28, 17, 42, 0.85);
     padding: 30px 25px;
     border-radius: 20px;
