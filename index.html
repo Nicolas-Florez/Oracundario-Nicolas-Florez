@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inicio | Frases Motivacionales</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Título de la Página</title>
+    <link rel="stylesheet" href="style.css" id="main-stylesheet"/>
+    <script src="./scripts/zodiaco.js"></script>
+    <script>
+      // Inicializar el tema zodiacal
+      document.addEventListener('DOMContentLoaded', function() {
+        const estiloGuardado = localStorage.getItem('estilo_zodiacal_activo');
+        if (estiloGuardado) {
+          try {
+            const signo = JSON.parse(estiloGuardado);
+            document.body.classList.add(`zodiaco-${signo.elemento}`);
+          } catch(e) {
+            console.error('Error al cargar el tema zodiacal:', e);
+          }
+        }
+      });
+    </script>
+  </head>
+  
+<body class="zodiaco-theme">
+  <script>
+    // Aplica tema zodiacal al cargar
+    const estiloGuardado = localStorage.getItem('estilo_zodiacal_activo');
+    if (estiloGuardado) {
+      try {
+        const signo = JSON.parse(estiloGuardado);
+        document.body.classList.add(`zodiaco-${signo.elemento}`);
+      } catch(e) {
+        console.error('Error cargando tema zodiacal:', e);
+      }
+    }
+  </script>
   <header>
     <h1>🌟 Bienvenido al ORACUNDARIO</h1>
     <p id="mensaje-dia">"Cada día es una nueva oportunidad para brillar."</p>
@@ -50,72 +78,80 @@
       <p>Descubre el origen y sentido oculto detrás de tu nombre.</p>
       <a href="nombre-significado.html" class="boton">Explorar</a>
     </div>
-      
-
   </main>
 
   <div class="boton-flotante-externo">
     <a href="https://labyrinthos.co/pages/one-card-tarot" target="_blank">🎴 Carta del día</a>
   </div>
   
+  <div class="tarjeta">
+    <h2>✨ Estilo Zodiacal</h2>
+    <p>Cambia el tema visual según tu signo.</p>
+    <div class="form-group">
+        <label for="fecha-nacimiento">Tu fecha de nacimiento:</label>
+        <input type="date" id="fecha-nacimiento" class="input-fecha">
+    </div>
+    <button class="boton" id="boton-zodiaco">Aplicar Estilo Zodiacal</button>
+    <p id="signo-zodiacal-display" style="margin-top: 10px; font-weight: bold;"></p>
+  </div>
   
-
   <div id="racha-dias" class="racha-flotante">🔥 Racha: 0 días</div>
-<script>
-  function obtenerRacha() {
-    const hoy = new Date();
-    let racha = 0;
-    for (let i = 0; i < 30; i++) {
-      const dia = new Date(hoy);
-      dia.setDate(hoy.getDate() - i);
-      const clave = "nota_frase_" + dia.getDate();
-      if (localStorage.getItem(clave)) {
-        racha++;
-      } else {
-        break;
+  
+  <script>
+    function obtenerRacha() {
+      const hoy = new Date();
+      let racha = 0;
+      for (let i = 0; i < 30; i++) {
+        const dia = new Date(hoy);
+        dia.setDate(hoy.getDate() - i);
+        const clave = "nota_frase_" + dia.getDate();
+        if (localStorage.getItem(clave)) {
+          racha++;
+        } else {
+          break;
+        }
       }
+      return racha;
     }
-    return racha;
-  }
 
-  document.getElementById("racha-dias").textContent = "🔥 Racha: " + obtenerRacha() + " días";
-</script>
-<script type="module" src="motiva-pet.js"></script>
+    document.getElementById("racha-dias").textContent = "🔥 Racha: " + obtenerRacha() + " días";
+  </script>
+  
+  <script type="module" src="motiva-pet.js"></script>
 
+  <div id="audio-toggle" class="boton-audio">🎵</div>
+  <audio id="audio-fondo" loop>
+    <source src="musica.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
 
-<div id="audio-toggle" class="boton-audio">🎵</div>
-<audio id="audio-fondo" loop>
-  <source src="musica.mp3" type="audio/mpeg" />
-  Tu navegador no soporta audio.
-</audio>
+  <!-- Música -->
+  <script>
+    const audio = document.getElementById("audio-fondo");
+    const toggle = document.getElementById("audio-toggle");
 
-
-<!-- Musica -->
-<script>
-  const audio = document.getElementById("audio-fondo");
-  const toggle = document.getElementById("audio-toggle");
-
-  // Comprobar preferencia guardada
-  if (localStorage.getItem("musica_activa") === "true") {
-    audio.play();
-    toggle.textContent = "🔊";
-  }
-
-  toggle.addEventListener("click", () => {
-    if (audio.paused) {
+    // Comprobar preferencia guardada
+    if (localStorage.getItem("musica_activa") === "true") {
       audio.play();
       toggle.textContent = "🔊";
-      localStorage.setItem("musica_activa", "true");
-    } else {
-      audio.pause();
-      toggle.textContent = "🎵";
-      localStorage.setItem("musica_activa", "false");
     }
-  });
-</script>
-<!-- Fin Musica -->
 
-</body>
+    toggle.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        toggle.textContent = "🔊";
+        localStorage.setItem("musica_activa", "true");
+      } else {
+        audio.pause();
+        toggle.textContent = "🎵";
+        localStorage.setItem("musica_activa", "false");
+      }
+    });
+  </script>
+  <!-- Fin Música -->
+
+  </body>
+<body class="zodiaco-theme">
 <footer>
   <p>Hecho con ❤️ para inspirarte cada día</p>
 </footer> 

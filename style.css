@@ -1089,3 +1089,223 @@ body {
 .boton-audio:hover {
   transform: scale(1.1);
 }
+/* Estilos para Signos de Fuego (Ej: Aries) */
+body.zodiaco-fuego {
+  background-image: url('./assets/estrellas.jpg'); /* Cambia la imagen de fondo */
+  background-color: #330000;
+  color: #ffccaa;
+}
+
+body.zodiaco-fuego header {
+  background: rgba(255, 69, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+}
+
+body.zodiaco-fuego .tarjeta {
+  background: rgba(255, 140, 0, 0.15);
+  box-shadow: 0 0 12px rgba(255, 140, 0, 0.8);
+  border: 1px solid rgba(255, 140, 0, 0.7);
+}
+
+body.zodiaco-fuego .tarjeta:hover {
+  box-shadow: 0 0 25px rgba(255, 165, 0, 0.9);
+}
+
+body.zodiaco-fuego .boton {
+  background-color: #ff4500;
+  box-shadow: 0 0 8px rgba(255, 69, 0, 0.8);
+}
+
+body.zodiaco-fuego .boton:hover {
+  background-color: #ff6347;
+  box-shadow: 0 0 20px rgba(255, 99, 71, 0.9);
+}
+
+/* Estilos para Signos de Agua (Ej: Cáncer) */
+body.zodiaco-agua {
+  background-image: url('./assets/estrellas.jpg'); /* Puedes usar la misma o una diferente */
+  background-color: #000033;
+  color: #ccddff;
+}
+
+body.zodiaco-agua header {
+  background: rgba(65, 105, 225, 0.3);
+  box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+}
+
+body.zodiaco-agua .tarjeta {
+  background: rgba(100, 149, 237, 0.15);
+  box-shadow: 0 0 12px rgba(100, 149, 237, 0.8);
+  border: 1px solid rgba(100, 149, 237, 0.7);
+}
+
+body.zodiaco-agua .tarjeta:hover {
+  box-shadow: 0 0 25px rgba(135, 206, 250, 0.9);
+}
+
+body.zodiaco-agua .boton {
+  background-color: #4169e1;
+  box-shadow: 0 0 8px rgba(65, 105, 225, 0.8);
+}
+
+body.zodiaco-agua .boton:hover {
+  background-color: #6495ed;
+  box-shadow: 0 0 20px rgba(100, 149, 237, 0.9);
+}
+/* ... (código CSS existente) ... */
+
+/* Estilos para el input de fecha */
+.input-fecha {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #7b4397;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #4b367c;
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+  box-shadow: inset 2px 2px 8px rgba(123, 67, 151, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-fecha:focus {
+  outline: none;
+  border-color: #9c27b0;
+  box-shadow: inset 2px 2px 8px rgba(123, 67, 151, 0.3), 0 0 8px #9c27b0cc;
+}
+
+
+/* Estilos para Signos de Fuego (Ej: Aries, Leo, Sagitario) */
+body.zodiaco-fuego {
+background-image: url('./assets/estrellas.jpg');
+background-color: #330000;
+color: #ffccaa;
+}
+
+body.zodiaco-fuego header {
+background: rgba(255, 69, 0, 0.3);
+box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+}
+
+body.zodiaco-fuego .tarjeta {
+background: rgba(255, 140, 0, 0.15);
+box-shadow: 0 0 12px rgba(255, 140, 0, 0.8);
+border: 1px solid rgba(255, 140, 0, 0.7);
+}
+
+body.zodiaco-fuego .tarjeta:hover {
+box-shadow: 0 0 25px rgba(255, 165, 0, 0.9);
+}
+
+body.zodiaco-fuego .boton {
+background-color: #ff4500;
+box-shadow: 0 0 8px rgba(255, 69, 0, 0.8);
+}
+
+body.zodiaco-fuego .boton:hover {
+background-color: #ff6347;
+box-shadow: 0 0 20px rgba(255, 99, 71, 0.9);
+}
+
+/* Estilos para Signos de Agua (Ej: Cáncer, Escorpio, Piscis) */
+body.zodiaco-agua {
+background-image: url('./assets/estrellas.jpg');
+background-color: #000033;
+color: #ccddff;
+}
+
+body.zodiaco-agua header {
+background: rgba(65, 105, 225, 0.3);
+box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+}
+
+body.zodiaco-agua .tarjeta {
+background: rgba(100, 149, 237, 0.15);
+box-shadow: 0 0 12px rgba(100, 149, 237, 0.8);
+border: 1px solid rgba(100, 149, 237, 0.7);
+}
+
+body.zodiaco-agua .tarjeta:hover {
+box-shadow: 0 0 25px rgba(135, 206, 250, 0.9);
+}
+
+body.zodiaco-agua .boton {
+background-color: #4169e1;
+box-shadow: 0 0 8px rgba(65, 105, 225, 0.8);
+}
+
+body.zodiaco-agua .boton:hover {
+background-color: #6495ed;
+box-shadow: 0 0 20px rgba(100, 149, 237, 0.9);
+}
+
+/* Estilos para Signos de Tierra (Ej: Tauro, Virgo, Capricornio) */
+body.zodiaco-tierra {
+background-image: url('./assets/estrellas.jpg');
+background-color: #2a2a00;
+color: #e0ffb3;
+}
+
+body.zodiaco-tierra header {
+background: rgba(139, 69, 19, 0.3);
+box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+}
+
+body.zodiaco-tierra .tarjeta {
+background: rgba(160, 82, 45, 0.15);
+box-shadow: 0 0 12px rgba(160, 82, 45, 0.8);
+border: 1px solid rgba(160, 82, 45, 0.7);
+}
+
+body.zodiaco-tierra .tarjeta:hover {
+box-shadow: 0 0 25px rgba(184, 134, 11, 0.9);
+}
+
+body.zodiaco-tierra .boton {
+background-color: #8b4513;
+box-shadow: 0 0 8px rgba(139, 69, 19, 0.8);
+}
+
+body.zodiaco-tierra .boton:hover {
+background-color: #a0522d;
+box-shadow: 0 0 20px rgba(160, 82, 45, 0.9);
+}
+
+/* Estilos para Signos de Aire (Ej: Géminis, Libra, Acuario) */
+body.zodiaco-aire {
+background-image: url('./assets/estrellas.jpg');
+background-color: #202020;
+color: #e6e6fa;
+}
+
+body.zodiaco-aire header {
+background: rgba(173, 216, 230, 0.3);
+box-shadow: 0 0 20px rgba(173, 216, 230, 0.5);
+}
+
+body.zodiaco-aire .tarjeta {
+background: rgba(176, 224, 230, 0.15);
+box-shadow: 0 0 12px rgba(176, 224, 230, 0.8);
+border: 1px solid rgba(176, 224, 230, 0.7);
+}
+
+body.zodiaco-aire .tarjeta:hover {
+box-shadow: 0 0 25px rgba(135, 206, 235, 0.9);
+}
+
+body.zodiaco-aire .boton {
+background-color: #add8e6;
+box-shadow: 0 0 8px rgba(173, 216, 230, 0.8);
+color: #333; /* Para que el texto sea legible en botones claros */
+}
+
+body.zodiaco-aire .boton:hover {
+background-color: #87ceeb;
+box-shadow: 0 0 20px rgba(135, 206, 235, 0.9);
+}
+
+/* ... (resto del código CSS) ... */
+
+

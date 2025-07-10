@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tienda de Frases</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Título de la Página</title>
+    <link rel="stylesheet" href="style.css" id="main-stylesheet"/>
+    <script src="./scripts/zodiaco.js"></script>
+    <script>
+      // Inicializar el tema zodiacal
+      document.addEventListener('DOMContentLoaded', function() {
+        const estiloGuardado = localStorage.getItem('estilo_zodiacal_activo');
+        if (estiloGuardado) {
+          try {
+            const signo = JSON.parse(estiloGuardado);
+            document.body.classList.add(`zodiaco-${signo.elemento}`);
+          } catch(e) {
+            console.error('Error al cargar el tema zodiacal:', e);
+          }
+        }
+      });
+    </script>
+  </head>
+  
 <body>
   <div class="tienda">
     <h2>🛒 Tienda de Frases Premium</h2>
