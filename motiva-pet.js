@@ -32,22 +32,26 @@ class MotivaPet extends HTMLElement {
         <style>
 
         h2{
-            color: #333;
+            color: #f3e6ff;
             padding: 0;
             margin: 0;  
             margin-bottom: 10px;
+            font-size: 2rem;
         }
 
           .pet-container {
+            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 16px;
+            width: 300px;
+            box-shadow: 0 0 12px #9c27b0cc;
             text-align: center;
-            background: #fffef2;
-            padding: 1.5rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-            width: 280px;
-            font-family: 'Segoe UI', sans-serif;
-            transition: all 0.3s ease;
-            margin: 1rem auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #f3e6ff; 
+            font-family: sans-serif;
+            border: 1px solid #9c27b0bb;
           }
           
 
@@ -61,21 +65,24 @@ class MotivaPet extends HTMLElement {
           }
           p {
             margin: 0.75rem 0;
-            font-size: 1rem;
-            color: #333;
+            font-size: 1.2rem;
+            color: #f3e6ff;
           }
           button {
-            background-color: #ffcb05;
+            background-color: #9c27b0;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 10px;
             font-size: 0.9rem;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: background 0.2s ease;
+            box-shadow: 0 4px 6px #9c27b0cc;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #f3e6ff;
           }
           button:hover {
-            background-color: #f4b400;
+            background-color: #b850d3;
+            box-shadow: 0 0 20px #d06cffdd;
           }
 
           img {
