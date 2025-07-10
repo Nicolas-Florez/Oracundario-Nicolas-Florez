@@ -5,11 +5,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
   }
   
 /* Fondo de la página principal */
 body {
-    background-image: url('estrella.gif');
+    background-image: url('./assets/estrella.gif');
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;

@@ -5,23 +5,23 @@ class MotivaPet extends HTMLElement {
   
       this.estados = {
         feliz: {
-          img: 'feliz.png',
+          img: './assets/feliz.png',
           mensaje: '¡Estoy muy feliz de verte hoy! 🌟'
         },
         emocionada: {
-          img: 'emocionada.png',
+          img: './assets/emocionada.png',
           mensaje: '¡Qué emoción! ¡Has hecho algo grandioso! 💥'
         },
         triste: {
-          img: 'triste.png',
+          img: './assets/triste.png',
           mensaje: 'Te he extrañado... 🥺 vuelve pronto.'
         },
         dormida: {
-          img: 'dormido.png',
+          img: './assets/dormido.png',
           mensaje: 'Zzz... vuelvo mañana... 😴'
         },
         motivada: {
-          img: 'motivada.png',
+          img: './assets/motivada.png',
           mensaje: '¡Sigue así, campeón/a! 💪'
         }
       };
