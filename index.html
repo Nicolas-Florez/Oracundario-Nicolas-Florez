@@ -203,6 +203,78 @@
 </script>
 <!-- Fin Musica -->
 
+<!-- Botón flotante para mascota mística -->
+<div class="boton-mascota-flotante" id="boton-mascota">
+  <span class="mascota-icon">🐾</span>
+  <span class="mascota-text"></span>
+</div>
+
+<!-- Modal de la mascota -->
+<div id="modal-mascota" class="modal-mascota">
+  <div class="modal-content-mascota">
+    <div class="modal-header-mascota">
+      <h2>Tu Mistimascota</h2>
+      <a href="index.html"><button class="cerrar-modal" id="cerrar-modal">&times;</button></a>
+    </div>
+    
+    <div class="mascota-display">
+      <div class="mascota-sprite" id="mascota-sprite">🐾</div>
+      <div class="mascota-name">Luna</div>
+      <div class="mascota-status" id="mascota-status">Feliz</div>
+    </div>
+
+    <div class="barras-estado">
+      <div class="barra-container">
+        <div class="barra-label">
+          <span>🍖 Hambre</span>
+          <span id="hambre-valor">100%</span>
+        </div>
+        <div class="barra-progreso">
+          <div class="barra-relleno hambre" id="barra-hambre"></div>
+        </div>
+      </div>
+
+      <div class="barra-container">
+        <div class="barra-label">
+          <span>😴 Sueño</span>
+          <span id="sueño-valor">100%</span>
+        </div>
+        <div class="barra-progreso">
+          <div class="barra-relleno sueño" id="barra-sueño"></div>
+        </div>
+      </div>
+
+      <div class="barra-container">
+        <div class="barra-label">
+          <span>⚡ Energía</span>
+          <span id="energia-valor">100%</span>
+        </div>
+        <div class="barra-progreso">
+          <div class="barra-relleno energia" id="barra-energia"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acciones-mascota">
+      <button class="boton-accion alimentar" id="btn-alimentar">
+        <span class="accion-icon">🍖</span>
+        <span>Alimentar</span>
+      </button>
+      <button class="boton-accion jugar" id="btn-jugar">
+        <span class="accion-icon">🎾</span>
+        <span>Jugar</span>
+      </button>
+      <button class="boton-accion dormir" id="btn-dormir">
+        <span class="accion-icon">😴</span>
+        <span>Dormir</span>
+      </button>
+    </div>
+
+    <div class="mascota-mensaje" id="mascota-mensaje"></div>
+  </div>
+  <script src="/Oracundario-Nicolas-Florez/scripts/mascota.js"></script>
+</div>
+
 <footer>
   <p>Hecho con ❤️ para inspirarte cada día</p>
 </footer> 
