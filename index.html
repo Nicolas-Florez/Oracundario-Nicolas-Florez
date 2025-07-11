@@ -12,31 +12,74 @@
     <p id="mensaje-dia">"Cada día es una nueva oportunidad para brillar."</p>
   </header>
 
-
   <div class="ruleta-container">
-    <h2>🎰 Ruleta de la Suerte</h2>
-    <p id="monedas">💰 Monedas: 0</p>
+    <h2>🎰 Ruleta de la Suerte Mística</h2>
+    <div class="stats-container">
+      <p id="monedas">💰 Monedas: 0</p>
+      <p id="giros-disponibles">🎲 Giros disponibles: 1</p>
+    </div>
+    <br><br>
     <div class="ruleta-visual">
-        <div class="ruleta" id="ruleta">
-          <div class="seccion s1">+5</div>
-          <div class="seccion s2">+10</div>
-          <div class="seccion s3">💬</div>
-          <div class="seccion s4">+15</div>
-          <div class="seccion s5">0</div>
-          <div class="seccion s6">+20</div>
-          <div class="seccion s7">💬</div>
+      <div class="ruleta-outer-ring"></div>
+      <div class="ruleta-inner-ring"></div>
+      <div class="ruleta" id="ruleta">
+        <div class="seccion s1" data-premio="monedas" data-valor="10">
+          <div class="premio-icon">💰</div>
+          <div class="premio-text">10</div>
         </div>
-        <div class="puntero">▼</div>
+        <div class="seccion s2" data-premio="monedas" data-valor="25">
+          <div class="premio-icon">💎</div>
+          <div class="premio-text">25</div>
+        </div>
+        <div class="seccion s3" data-premio="frase" data-valor="1">
+          <div class="premio-icon">📜</div>
+          <div class="premio-text">Frase</div>
+        </div>
+        <div class="seccion s4" data-premio="monedas" data-valor="50">
+          <div class="premio-icon">🌟</div>
+          <div class="premio-text">50</div>
+        </div>
+        <div class="seccion s5" data-premio="multiplicador" data-valor="2">
+          <div class="premio-icon">✨</div>
+          <div class="premio-text">x2</div>
+        </div>
+        <div class="seccion s6" data-premio="monedas" data-valor="15">
+          <div class="premio-icon">💰</div>
+          <div class="premio-text">15</div>
+        </div>
+        <div class="seccion s7" data-premio="bonus" data-valor="1">
+          <div class="premio-icon">🎁</div>
+          <div class="premio-text">Bonus</div>
+        </div>
+        <div class="seccion s8" data-premio="monedas" data-valor="35">
+          <div class="premio-icon">💎</div>
+          <div class="premio-text">35</div>
+        </div>
       </div>
-      
-      <button id="girar-ruleta" class="boton">Girar Ruleta</button>
-      <p id="resultado" class="resultado"></p>
-      
-    <p id="resultado" class="resultado"></p>
+      <div class="puntero">
+        <div class="puntero-inner">▼</div>
+      </div>
+      <div class="centro-ruleta">
+        <div class="centro-inner">
+          <i class="fas fa-magic"></i>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="ruleta-controls">
+      <button id="girar-ruleta" class="boton-girar">
+        <i class="fas fa-play"></i>
+        <span>Girar Ruleta</span>
+      </button>
+    </div>
+    
+    <div id="resultado" class="resultado"></div>
+    
+    <!-- Partículas de celebración -->
+    <div id="particulas-container" class="particulas-container"></div>
   </div>
-  <br><br>
   <script src="./scripts/ruleta.js"></script>
-
+<br><br>
   <main class="tarjetas-container">
     <div class="tarjeta">
       <h2>📅 Calendario de Frases</h2>
