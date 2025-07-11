@@ -108,11 +108,46 @@
 
   </main>
 
-  <div class="boton-flotante-externo">
-    <a href="https://labyrinthos.co/pages/one-card-tarot" target="_blank">🎴 Carta del día</a>
+  
+  <!-- Botón flotante del zodíaco -->
+  <div id="boton-zodiaco" class="boton-zodiaco-flotante">
+    <span class="zodiac-icon">♈</span>
+    <span class="zodiac-text">Mi Signo</span>
   </div>
-  
-  
+
+  <!-- Modal del zodíaco -->
+  <div id="modal-zodiaco" class="modal-zodiaco">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🔮 Descubre tu Signo Zodiacal</h2>
+        <button class="close-modal" id="cerrar-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="fecha-selector">
+          <label for="fecha-nacimiento">📅 Fecha de Nacimiento:</label>
+          <input type="date" id="fecha-nacimiento" class="input-fecha">
+        </div>
+        <button id="calcular-signo" class="boton-calcular">Calcular Mi Signo</button>
+        
+        <div id="resultado-zodiaco" class="resultado-zodiaco" style="display: none;">
+          <div class="signo-info">
+            <div class="signo-icon"></div>
+            <div class="signo-details">
+              <h3 class="signo-nombre"></h3>
+              <p class="signo-fechas"></p>
+              <p class="signo-elemento"></p>
+            </div>
+          </div>
+          <div class="colores-container">
+            <h4>🎨 Tus Colores Cósmicos:</h4>
+            <div class="colores-preview"></div>
+          </div>
+          <button id="aplicar-colores" class="boton-aplicar">Aplicar Colores a Mi Perfil</button>
+        </div>
+      </div>
+    </div>
+    <script src="zodiac.js"></script>
+  </div>
 
   <div id="racha-dias" class="racha-flotante">🔥 Racha: 0 días</div>
 <script>
@@ -134,7 +169,6 @@
 
   document.getElementById("racha-dias").textContent = "🔥 Racha: " + obtenerRacha() + " días";
 </script>
-<script type="module" src="motiva-pet.js"></script>
 
 
 <div id="audio-toggle" class="boton-audio">🎵</div>
@@ -169,9 +203,11 @@
 </script>
 <!-- Fin Musica -->
 
-</body>
 <footer>
   <p>Hecho con ❤️ para inspirarte cada día</p>
 </footer> 
+
+</body>
+
 
 </html>
