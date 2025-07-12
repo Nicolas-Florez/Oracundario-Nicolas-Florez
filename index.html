@@ -105,6 +105,11 @@
       <a href="nombre-significado.html" class="boton">Explorar</a>
     </div>
       
+    <div class="tarjeta">
+      <h2>🌠 Tu Guia Mistica</h2>
+      <p>Conversa sobre sueños, motivacion y energia...</p>
+      <a href="chatbot.html" class="boton">Explorar</a>
+    </div>
 
   </main>
 
@@ -187,8 +192,16 @@
         </div>
       </div>
     </div>
-    <script src="zodiac.js"></script>
-  </div>
+      <script src="zodiac.js"></script>
+  <script>
+    // Aplicar colores zodiacales al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.ZodiacColors && window.ZodiacColors.aplicarColoresGuardados) {
+        window.ZodiacColors.aplicarColoresGuardados();
+      }
+    });
+  </script>
+</div>
 
   <div id="racha-dias" class="racha-flotante">🔥 Racha: 0 días</div>
 <script>

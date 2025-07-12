@@ -115,6 +115,13 @@ for (let i = 1; i <= diasMes; i++) {
       modalCal.classList.add("fade-in");
       cerrarModalBtnCal.focus();
       dia.classList.add("visto");
+      
+      // Aplicar colores zodiacales al día marcado como visto
+      if (window.ZodiacColors && window.ZodiacColors.aplicarColoresADinamicos) {
+        setTimeout(() => {
+          window.ZodiacColors.aplicarColoresADinamicos();
+        }, 100);
+      }
     });
   }
 
@@ -173,6 +180,13 @@ function actualizarContador() {
 actualizarContador();
 actualizarMonedasUI();
 setInterval(actualizarContador, 1000);
+
+// Aplicar colores zodiacales después de cargar el calendario
+setTimeout(() => {
+  if (window.ZodiacColors && window.ZodiacColors.aplicarColoresGuardados) {
+    window.ZodiacColors.aplicarColoresGuardados();
+  }
+}, 200);
 
 
 // Diario

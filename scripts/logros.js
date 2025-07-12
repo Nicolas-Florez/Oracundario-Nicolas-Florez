@@ -23,6 +23,13 @@ const logros = [
       div.innerHTML = completado ? `✅ ${logro.texto}` : `🔒 ${logro.texto}`;
       contenedor.appendChild(div);
     });
+    
+    // Aplicar colores zodiacales a los logros después de crearlos
+    if (window.ZodiacColors && window.ZodiacColors.aplicarColoresADinamicos) {
+      setTimeout(() => {
+        window.ZodiacColors.aplicarColoresADinamicos();
+      }, 100);
+    }
   }
   
   function diasDesbloqueados() {
@@ -54,4 +61,11 @@ const logros = [
   }
   
   mostrarLogros();
+  
+  // Aplicar colores zodiacales después de cargar los logros
+  setTimeout(() => {
+    if (window.ZodiacColors && window.ZodiacColors.aplicarColoresGuardados) {
+      window.ZodiacColors.aplicarColoresGuardados();
+    }
+  }, 200);
   

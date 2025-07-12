@@ -347,6 +347,12 @@ const SIGNOS_ZODIACALES = {
     root.style.setProperty('--zodiac-text', coloresActuales.text);
     root.style.setProperty('--zodiac-border', coloresActuales.border);
   
+    // Aplicar colores a elementos específicos de la ruleta
+    aplicarColoresARuleta();
+    
+    // Aplicar colores a otros elementos de la página
+    aplicarColoresAElementos();
+  
     // Guardar en localStorage
     localStorage.setItem('zodiac-sign', signoActual);
     localStorage.setItem('zodiac-colors', JSON.stringify(coloresActuales));
@@ -380,6 +386,12 @@ const SIGNOS_ZODIACALES = {
       root.style.setProperty('--zodiac-light', coloresActuales.light);
       root.style.setProperty('--zodiac-text', coloresActuales.text);
       root.style.setProperty('--zodiac-border', coloresActuales.border);
+  
+      // Aplicar colores a elementos específicos
+      setTimeout(() => {
+        aplicarColoresARuleta();
+        aplicarColoresAElementos();
+      }, 100);
   
       // Actualizar botón flotante
       const datos = SIGNOS_ZODIACALES[savedSign];
@@ -458,6 +470,250 @@ const SIGNOS_ZODIACALES = {
     applyZodiacColorsToPage();
   }
   
+  // Funciones para aplicar colores a elementos específicos
+  function aplicarColoresARuleta() {
+    // Aplicar colores a la ruleta
+    const ruleta = document.querySelector('.ruleta');
+    const ruletaContainer = document.querySelector('.ruleta-container');
+    const botonGirar = document.getElementById('girar-ruleta');
+    const centroRuleta = document.querySelector('.centro-ruleta');
+    const puntero = document.querySelector('.puntero');
+    
+    if (ruleta) {
+      ruleta.style.boxShadow = `0 0 30px ${coloresActuales.shadow}`;
+    }
+    
+    if (ruletaContainer) {
+      ruletaContainer.style.boxShadow = `0 0 50px ${coloresActuales.shadow}`;
+    }
+    
+    if (botonGirar) {
+      botonGirar.style.background = `linear-gradient(45deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+      botonGirar.style.boxShadow = `0 4px 20px ${coloresActuales.shadow}`;
+    }
+    
+    if (centroRuleta) {
+      centroRuleta.style.background = `linear-gradient(45deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+      centroRuleta.style.boxShadow = `0 0 20px ${coloresActuales.shadow}`;
+    }
+    
+    if (puntero) {
+      puntero.style.background = coloresActuales.primary;
+      puntero.style.boxShadow = `0 0 10px ${coloresActuales.shadow}`;
+    }
+    
+    // Aplicar colores a las secciones de la ruleta
+    const secciones = document.querySelectorAll('.seccion');
+    secciones.forEach((seccion, index) => {
+      const hue = (index * 45 + parseInt(coloresActuales.primary.slice(1), 16)) % 360;
+      const color = `hsl(${hue}, 70%, 60%)`;
+      seccion.style.background = color;
+      seccion.style.boxShadow = `0 0 10px ${color}80`;
+    });
+  }
+  
+  function aplicarColoresAElementos() {
+    // Aplicar colores a botones
+    const botones = document.querySelectorAll('.boton');
+    botones.forEach(boton => {
+      boton.style.background = `linear-gradient(45deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+      boton.style.boxShadow = `0 4px 15px ${coloresActuales.shadow}`;
+      boton.style.borderColor = coloresActuales.border;
+    });
+    
+    // Aplicar colores a tarjetas
+    const tarjetas = document.querySelectorAll('.tarjeta');
+    tarjetas.forEach(tarjeta => {
+      tarjeta.style.borderColor = coloresActuales.border;
+      tarjeta.style.boxShadow = `0 4px 20px ${coloresActuales.shadow}`;
+    });
+    
+    // Aplicar colores a headers
+    const headers = document.querySelectorAll('header');
+    headers.forEach(header => {
+      header.style.background = `linear-gradient(135deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+    });
+    
+    // Aplicar colores a elementos del chatbot
+    const chatbotHeader = document.querySelector('.chatbot-header');
+    if (chatbotHeader) {
+      chatbotHeader.style.background = `linear-gradient(90deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+    }
+    
+    const chatbotContainer = document.querySelector('.chatbot-container');
+    if (chatbotContainer) {
+      chatbotContainer.style.borderColor = coloresActuales.border;
+      chatbotContainer.style.boxShadow = `0 0 30px ${coloresActuales.shadow}`;
+    }
+    
+    // Aplicar colores a botones de opciones del chatbot
+    const optionButtons = document.querySelectorAll('.option-button');
+    optionButtons.forEach(button => {
+      button.style.borderColor = coloresActuales.border;
+      button.addEventListener('mouseenter', () => {
+        button.style.background = `rgba(${coloresActuales.primary.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.8)`;
+      });
+      button.addEventListener('mouseleave', () => {
+        button.style.background = `rgba(${coloresActuales.primary.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.5)`;
+      });
+    });
+    
+    // Aplicar colores a elementos de la mascota
+    const mascotaButtons = document.querySelectorAll('.boton-accion');
+    mascotaButtons.forEach(button => {
+      button.style.borderColor = coloresActuales.border;
+    });
+    
+    const mascotaModal = document.querySelector('.modal-content-mascota');
+    if (mascotaModal) {
+      mascotaModal.style.borderColor = coloresActuales.border;
+    }
+    
+    // Aplicar colores a elementos de logros
+    const logroItems = document.querySelectorAll('.logro-item');
+    logroItems.forEach(item => {
+      if (item.classList.contains('completado')) {
+        item.style.borderColor = coloresActuales.primary;
+        item.style.background = `linear-gradient(45deg, ${coloresActuales.primary}20, ${coloresActuales.secondary}20)`;
+        item.style.boxShadow = `0 4px 15px ${coloresActuales.shadow}`;
+      } else {
+        item.style.borderColor = coloresActuales.border;
+        item.style.background = `rgba(${coloresActuales.primary.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.1)`;
+      }
+    });
+    
+    // Aplicar colores a elementos de la tienda
+    const mascotaCards = document.querySelectorAll('.mascota-card');
+    mascotaCards.forEach(card => {
+      card.style.borderColor = coloresActuales.border;
+      card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = `0 8px 25px ${coloresActuales.shadow}`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = `0 4px 15px rgba(0, 0, 0, 0.1)`;
+      });
+    });
+    
+    // Aplicar colores a elementos del calendario
+    const calendario = document.querySelector('.calendario');
+    if (calendario) {
+      calendario.style.borderColor = coloresActuales.border;
+      calendario.style.boxShadow = `0 4px 20px ${coloresActuales.shadow}`;
+    }
+    
+    // Aplicar colores a días del calendario
+    const diasCalendario = document.querySelectorAll('.dia');
+    diasCalendario.forEach(dia => {
+      if (dia.classList.contains('visto')) {
+        dia.style.background = `linear-gradient(45deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+        dia.style.boxShadow = `0 2px 10px ${coloresActuales.shadow}`;
+      } else if (dia.classList.contains('desbloqueado')) {
+        dia.style.borderColor = coloresActuales.border;
+        dia.addEventListener('mouseenter', () => {
+          dia.style.background = `rgba(${coloresActuales.primary.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.3)`;
+        });
+        dia.addEventListener('mouseleave', () => {
+          dia.style.background = '';
+        });
+      }
+    });
+    
+    // Aplicar colores a modales del calendario
+    const modalFrase = document.querySelector('.modal-frase');
+    if (modalFrase) {
+      const modalContenido = modalFrase.querySelector('.modal-contenido');
+      if (modalContenido) {
+        modalContenido.style.borderColor = coloresActuales.border;
+        modalContenido.style.boxShadow = `0 10px 30px ${coloresActuales.shadow}`;
+      }
+    }
+    
+    // Aplicar colores a elementos del diario
+    const diario = document.querySelector('.diario');
+    if (diario) {
+      diario.style.borderColor = coloresActuales.border;
+      diario.style.boxShadow = `0 4px 20px ${coloresActuales.shadow}`;
+    }
+    
+    // Aplicar colores a botón flotante del diario
+    const btnFlotante = document.getElementById('btn-flotante');
+    if (btnFlotante) {
+      btnFlotante.style.background = `linear-gradient(45deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+      btnFlotante.style.boxShadow = `0 4px 15px ${coloresActuales.shadow}`;
+    }
+    
+    // Aplicar colores a contenedor de logros
+    const logrosContainer = document.querySelector('.logros');
+    if (logrosContainer) {
+      logrosContainer.style.borderColor = coloresActuales.border;
+      logrosContainer.style.boxShadow = `0 4px 20px ${coloresActuales.shadow}`;
+    }
+    
+    // Aplicar colores a lista de logros
+    const listaLogros = document.querySelector('.lista-logros');
+    if (listaLogros) {
+      listaLogros.style.borderColor = coloresActuales.border;
+    }
+  }
+  
+  // Función para aplicar colores al cargar la página
+  function aplicarColoresGuardados() {
+    const savedColors = localStorage.getItem('zodiac-colors');
+    if (savedColors) {
+      coloresActuales = JSON.parse(savedColors);
+      
+      // Aplicar colores básicos
+      const root = document.documentElement;
+      root.style.setProperty('--zodiac-primary', coloresActuales.primary);
+      root.style.setProperty('--zodiac-secondary', coloresActuales.secondary);
+      root.style.setProperty('--zodiac-shadow', coloresActuales.shadow);
+      root.style.setProperty('--zodiac-light', coloresActuales.light);
+      root.style.setProperty('--zodiac-text', coloresActuales.text);
+      root.style.setProperty('--zodiac-border', coloresActuales.border);
+      
+      // Aplicar colores a elementos específicos
+      setTimeout(() => {
+        aplicarColoresARuleta();
+        aplicarColoresAElementos();
+      }, 100);
+    }
+  }
+  
+  // Función para aplicar colores a elementos dinámicos
+  function aplicarColoresADinamicos() {
+    if (!coloresActuales) return;
+    
+    // Aplicar colores a días del calendario que se crean dinámicamente
+    const diasCalendario = document.querySelectorAll('.dia');
+    diasCalendario.forEach(dia => {
+      if (dia.classList.contains('visto')) {
+        dia.style.background = `linear-gradient(45deg, ${coloresActuales.primary}, ${coloresActuales.secondary})`;
+        dia.style.boxShadow = `0 2px 10px ${coloresActuales.shadow}`;
+      } else if (dia.classList.contains('desbloqueado')) {
+        dia.style.borderColor = coloresActuales.border;
+        dia.addEventListener('mouseenter', () => {
+          dia.style.background = `rgba(${coloresActuales.primary.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.3)`;
+        });
+        dia.addEventListener('mouseleave', () => {
+          dia.style.background = '';
+        });
+      }
+    });
+    
+    // Aplicar colores a logros que se crean dinámicamente
+    const logroItems = document.querySelectorAll('.logro-item');
+    logroItems.forEach(item => {
+      if (item.classList.contains('completado')) {
+        item.style.borderColor = coloresActuales.primary;
+        item.style.background = `linear-gradient(45deg, ${coloresActuales.primary}20, ${coloresActuales.secondary}20)`;
+        item.style.boxShadow = `0 4px 15px ${coloresActuales.shadow}`;
+      } else {
+        item.style.borderColor = coloresActuales.border;
+        item.style.background = `rgba(${coloresActuales.primary.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(', ')}, 0.1)`;
+      }
+    });
+  }
+  
   // Exportar funciones para uso en otras páginas
   window.ZodiacColors = {
     applyZodiacColorsToPage,
@@ -465,6 +721,8 @@ const SIGNOS_ZODIACALES = {
       const savedColors = localStorage.getItem('zodiac-colors');
       return savedColors ? JSON.parse(savedColors) : null;
     },
-    getStoredSign: () => localStorage.getItem('zodiac-sign')
+    getStoredSign: () => localStorage.getItem('zodiac-sign'),
+    aplicarColoresGuardados,
+    aplicarColoresADinamicos
   };
   

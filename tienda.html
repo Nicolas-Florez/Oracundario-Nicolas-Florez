@@ -15,5 +15,14 @@
   </div>
 
   <script src="./scripts/tienda.js"></script>
+  <script src="zodiac.js"></script>
+  <script>
+    // Aplicar colores zodiacales al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.ZodiacColors && window.ZodiacColors.aplicarColoresGuardados) {
+        window.ZodiacColors.aplicarColoresGuardados();
+      }
+    });
+  </script>
 </body>
 </html>
