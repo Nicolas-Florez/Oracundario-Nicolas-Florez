@@ -88,9 +88,9 @@
     </div>
 
     <div class="tarjeta">
-      <h2>🛒 Tienda de Frases</h2>
-      <p>Desbloquea frases premium con tus monedas.</p>
-      <a href="tienda.html" class="boton">Ir a la Tienda</a>
+      <h2>🐾 Tienda de Mascotas</h2>
+      <p>Adopta compañeros virtuales para tu aventura.</p>
+      <button id="abrir-tienda-mascotas" class="boton">Adoptar Mascota</button>
     </div>
   
     <div class="tarjeta">
@@ -107,6 +107,47 @@
       
 
   </main>
+
+  <div id="mascota-activa" class="mascota-flotante" style="display: none;">
+    <div class="mascota-sprite-t" id="mascota-sprite">🐱</div>
+    <div class="mascota-nombre-t" id="mascota-nombre">Mi Mascota</div>
+  </div>
+
+  <!-- Modal de la tienda de mascotas -->
+  <div id="modal-tienda-mascotas" class="modal-tienda-mascotas">
+    <div class="modal-content-tienda">
+      <div class="modal-header-tienda">
+        <h2>🐾 Tienda de Mascotas Cósmicas</h2>
+        <button class="close-modal-tienda" id="cerrar-modal-tienda">&times;</button>
+      </div>
+      <div class="modal-body-tienda">
+        <div class="tabs-tienda">
+          <button class="tab-btn active" data-tab="comprar">🛒 Comprar</button>
+          <button class="tab-btn" data-tab="inventario">🎒 Mi Inventario</button>
+        </div>
+        
+        <div id="tab-comprar" class="tab-content active">
+          <div class="saldo-tienda">
+            <span id="saldo-monedas">💰 Monedas: 0</span>
+          </div>
+          <div class="mascotas-grid" id="mascotas-disponibles">
+            <!-- Las mascotas se cargarán dinámicamente -->
+          </div>
+        </div>
+        
+        <div id="tab-inventario" class="tab-content">
+          <div class="inventario-header">
+            <h3>🎒 Tus Mascotas</h3>
+            <p>Selecciona una mascota para que te acompañe</p>
+          </div>
+          <div class="mascotas-grid" id="mascotas-inventario">
+            <!-- Las mascotas del inventario se cargarán dinámicamente -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/script-mascota-tienda.js"></script>
+  </div>
 
   
   <!-- Botón flotante del zodíaco -->
