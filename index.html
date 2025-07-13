@@ -227,7 +227,7 @@
 
 <div id="audio-toggle" class="boton-audio">🎵</div>
 <audio id="audio-fondo" loop>
-  <source src="musica.mp3" type="audio/mpeg" />
+  <source src="1 Hour of Epic Halo Music [zsrZsW8MCfA].mp3" type="audio/mpeg" />
   Tu navegador no soporta audio.
 </audio>
 
@@ -272,7 +272,7 @@
     </div>
     
     <div class="mascota-display">
-      <div class="mascota-sprite" id="mascota-sprite">🐾</div>
+      <div class="mascota-sprite" id="mascota-sprite"></div>
       <div class="mascota-name">Luna</div>
       <div class="mascota-status" id="mascota-status">Feliz</div>
     </div>
@@ -328,6 +328,81 @@
   </div>
   <script src="/Oracundario-Nicolas-Florez/scripts/mascota.js"></script>
 </div>
+
+    <!-- Mascota flotante -->
+    <div id="mascota-activa" class="mascota-flotante" style="display: none;">
+        <div class="mascota-sprite-t" id="mascota-sprite">🐱</div>
+        <div class="mascota-nombre-t" id="mascota-nombre">Mi Mascota</div>
+    </div>
+
+    <!-- Modal de la mascota -->
+    <div id="modal-mascota" class="modal-mascota">
+        <div class="modal-content-mascota">
+            <div class="modal-header-mascota">
+                <h2>🐾 Tu Familiar Místico</h2>
+                <button class="cerrar-modal" id="cerrar-modal">&times;</button>
+            </div>
+            <div class="mascota-display">
+                <div class="mascota-sprite" id="mascota-sprite-modal">
+                    <!-- Sprite de la mascota -->
+                </div>
+                <div class="mascota-name" id="mascota-name">Tu Familiar</div>
+                <div class="mascota-status" id="mascota-status">Radiante de energía ✨</div>
+            </div>
+            
+            <div class="barras-estado">
+                <div class="barra-container">
+                    <div class="barra-label">🍖 Hambre</div>
+                    <div class="barra-progreso">
+                        <div class="barra-relleno hambre" id="barra-hambre" style="width: 100%"></div>
+                    </div>
+                    <span id="hambre-valor">100%</span>
+                </div>
+                
+                <div class="barra-container">
+                    <div class="barra-label">😴 Sueño</div>
+                    <div class="barra-progreso">
+                        <div class="barra-relleno sueño" id="barra-sueño" style="width: 100%"></div>
+                    </div>
+                    <span id="sueño-valor">100%</span>
+                </div>
+                
+                <div class="barra-container">
+                    <div class="barra-label">⚡ Energía</div>
+                    <div class="barra-progreso">
+                        <div class="barra-relleno energia" id="barra-energia" style="width: 100%"></div>
+                    </div>
+                    <span id="energia-valor">100%</span>
+                </div>
+            </div>
+            
+            <div class="acciones-mascota">
+                <button class="boton-accion alimentar" id="btn-alimentar">
+                    <span class="accion-icon">🍖</span>
+                    Alimentar
+                </button>
+                <button class="boton-accion jugar" id="btn-jugar">
+                    <span class="accion-icon">🎾</span>
+                    Jugar
+                </button>
+                <button class="boton-accion dormir" id="btn-dormir">
+                    <span class="accion-icon">😴</span>
+                    Dormir
+                </button>
+            </div>
+            
+            <div class="mascota-mensaje" id="mascota-mensaje">
+                ¡Tu familiar está muy feliz y lleno de energía mística!
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante de la mascota -->
+    <div class="" id="boton-mascota"></div>
+
+    <script src="chat.js"></script>
+    <script src="scripts/mascota.js"></script>
+    <script src="zodiac.js"></script>
 
 <footer>
   <p>Hecho con ❤️ para inspirarte cada día</p>
