@@ -111,6 +111,27 @@ for (let i = 1; i <= diasMes; i++) {
 
       localStorage.setItem(clave, frase);
 
+      // Agregar la frase como nota automáticamente solo si no existe ya una nota para hoy
+      const fecha = new Date().toISOString().slice(0, 10);
+      const claveNota = "nota_" + fecha;
+      const notaExistente = localStorage.getItem(claveNota);
+      
+      if (!notaExistente) {
+        const tituloNota = `Frase del día ${numDia}`;
+        
+        // Crear objeto de nota con la frase
+        const notaObj = { 
+          titulo: tituloNota, 
+          contenido: frase 
+        };
+        
+        // Guardar la nota en localStorage
+        localStorage.setItem(claveNota, JSON.stringify(notaObj));
+        
+        // Actualizar la interfaz de notas sin recargar
+        cargarNotas();
+      }
+
       modalCal.classList.remove("oculto");
       modalCal.classList.add("fade-in");
       cerrarModalBtnCal.focus();
@@ -233,17 +254,17 @@ function limpiarModal() {
 }
 
 // Guardar nota desde modal
-guardarModalBtn.addEventListener("click", () => {
+guardarModalBtn.addEventListener("click", async () => {
   const titulo = tituloInput.value.trim();
   const contenido = contenidoInput.value.trim();
 
   if (!titulo) {
-    alert("⚠️ El título no puede estar vacío.");
+    Swal.fire("No hay Titulo","⚠️ El título no puede estar vacío.", "warning");
     tituloInput.focus();
     return;
   }
   if (!contenido) {
-    alert("⚠️ El contenido no puede estar vacío.");
+    Swal.fire("No hay Contenido","⚠️ El contenido no puede estar vacío.", "warning");
     contenidoInput.focus();
     return;
   }
@@ -256,8 +277,16 @@ guardarModalBtn.addEventListener("click", () => {
     const fecha = new Date().toISOString().slice(0, 10);
     clave = "nota_" + fecha;
     if (localStorage.getItem(clave)) {
-      const sobrescribir = confirm("Ya existe una nota para hoy. ¿Deseas sobrescribirla?");
-      if (!sobrescribir) return;
+      const result = await Swal.fire({
+        title: "Nota existente",
+        text: "Ya existe una nota para hoy. ¿Deseas sobrescribirla?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Sí, sobrescribir",
+        cancelButtonText: "Cancelar"
+      });
+      
+      if (!result.isConfirmed) return;
     }
   }
 
@@ -268,7 +297,7 @@ guardarModalBtn.addEventListener("click", () => {
   limpiarModal();
   modal.classList.add("oculto");
   cargarNotas();
-  alert("✅ Nota guardada.");
+  Swal.fire("✅ Nota guardada.","", "succes");
 });
 
 // Cargar historial de notas y mostrar título y contenido
@@ -341,10 +370,19 @@ function activarBotones() {
   });
 
   document.querySelectorAll(".boton-accion.eliminar").forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       const clave = btn.dataset.clave;
-      const confirmar = confirm("¿Estás seguro de que deseas eliminar esta nota?");
-      if (confirmar) {
+      const result = await Swal.fire({
+        title: "Eliminar nota",
+        text: "¿Estás seguro de que deseas eliminar esta nota?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: "#d33"
+      });
+      
+      if (result.isConfirmed) {
         localStorage.removeItem(clave);
         cargarNotas();
       }
