@@ -2648,52 +2648,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* Mascota flotante activa */
-.mascota-flotante {
-  position: fixed;
-  bottom: 250px;
-  right: 50px;
-  z-index: 999;
-  cursor: pointer;
-  user-select: none;
-}
 
-.mascota-flotante.appear {
-  animation: appearFromBottom 0.8s ease-out;
-}
-
-@keyframes appearFromBottom {
-  from {
-      opacity: 0;
-      transform: translateY(100px) scale(0.5);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-  }
-}
-
-.mascota-flotante .mascota-sprite-t {
-  font-size: 2.5rem;
-  margin-bottom: 5px;
-  transition: transform 0.3s ease;
-}
-
-.mascota-flotante .mascota-sprite-t.clicked {
-  transform: scale(1.2);
-}
-
-.mascota-nombre-t {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  text-align: center;
-  margin-top: 5px;
-  white-space: nowrap;
-  backdrop-filter: blur(10px);
-}
 
 /* Mensajes flotantes */
 .mensaje-flotante {
@@ -2766,14 +2721,7 @@ body {
       gap: 15px;
   }
   
-  .mascota-flotante {
-      bottom: 10px;
-      right: 10px;
-  }
-  
-  .mascota-flotante .mascota-sprite {
-      font-size: 2rem;
-  }
+
   
   .mensaje-flotante {
       top: 10px;

@@ -71,7 +71,7 @@ class MascotaVirtual {
       this.modal = document.getElementById('modal-mascota');
       
       // Botón cerrar modal
-      const cerrarModal = document.getElementById('cerrar-modal');
+      const cerrarModal = document.getElementById('cerrar-modal-mascota');
       cerrarModal.addEventListener('click', () => this.cerrarModal());
       
       // Cerrar modal clickeando fuera
@@ -147,6 +147,7 @@ class MascotaVirtual {
     }
     
     abrirModal() {
+      this.mostrarMascotaActivaEnModal();
       this.modal.classList.add('show');
       this.actualizarUI();
       document.body.style.overflow = 'hidden';
@@ -155,6 +156,35 @@ class MascotaVirtual {
     cerrarModal() {
       this.modal.classList.remove('show');
       document.body.style.overflow = 'auto';
+    }
+
+    mostrarMascotaActivaEnModal() {
+      const mascotaActiva = localStorage.getItem('mascotaActiva');
+      const sprite = document.getElementById('mascota-sprite-modal');
+      const nombre = document.getElementById('mascota-nombre-modal');
+      if (mascotaActiva) {
+        const mascotas = [
+          { id: 'gato', nombre: 'Gato Místico', emoji: '🐱' },
+          { id: 'perro', nombre: 'Perro Guardián', emoji: '🐕' },
+          { id: 'dragon', nombre: 'Dragón Cósmico', emoji: '🐉' },
+          { id: 'unicornio', nombre: 'Unicornio Celestial', emoji: '🦄' },
+          { id: 'phoenix', nombre: 'Fénix Renaciente', emoji: '🔥' },
+          { id: 'buho', nombre: 'Búho Sabio', emoji: '🦉' },
+          { id: 'mariposa', nombre: 'Mariposa Transformadora', emoji: '🦋' },
+          { id: 'lobo', nombre: 'Lobo Espiritual', emoji: '🐺' }
+        ];
+        const mascota = mascotas.find(m => m.id === mascotaActiva);
+        if (mascota) {
+          sprite.textContent = mascota.emoji;
+          nombre.textContent = mascota.nombre;
+        } else {
+          sprite.textContent = '';
+          nombre.textContent = 'No tienes mascota activa';
+        }
+      } else {
+        sprite.textContent = '';
+        nombre.textContent = 'No tienes mascota activa';
+      }
     }
     
     actualizarUI() {

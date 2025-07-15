@@ -280,30 +280,9 @@ class TiendaMascotas {
         this.mostrarMensaje(`⭐ ${mascota.nombre} ahora te acompaña`, 'info');
     }
     
-    mostrarMascotaActiva() {
-        const mascotaActiva = this.getMascotaActiva();
-        if (!mascotaActiva) {
-            document.getElementById('mascota-activa').style.display = 'none';
-            return;
-        }
-        
-        const mascota = this.mascotas.find(m => m.id === mascotaActiva);
-        if (!mascota) return;
-        
-        const container = document.getElementById('mascota-activa');
-        const sprite = document.getElementById('mascota-sprite');
-        const nombre = document.getElementById('mascota-nombre');
-        
-        sprite.textContent = mascota.emoji;
-        sprite.className = `mascota-sprite ${mascota.animacion}`;
-        nombre.textContent = mascota.nombre;
-        
-        container.style.display = 'block';
-        container.classList.add('appear');
-    }
-    
     loadMascotaActiva() {
-        this.mostrarMascotaActiva();
+        // La mascota activa ahora solo se muestra en el modal
+        // No necesitamos mostrar una mascota flotante
     }
     
     celebrarCompra(mascota) {
@@ -471,32 +450,3 @@ function darMonedas(cantidad) {
     const monedasActuales = tiendaMascotas.getMonedas();
     tiendaMascotas.setMonedas(monedasActuales + cantidad);
 }
-
-// Hacer que la mascota activa sea clicable
-document.addEventListener('click', (e) => {
-    if (e.target.closest('#mascota-activa')) {
-        const mascotaSprite = document.getElementById('mascota-sprite');
-        mascotaSprite.classList.add('clicked');
-        
-        setTimeout(() => {
-            mascotaSprite.classList.remove('clicked');
-        }, 300);
-        
-        // Mostrar mensaje de la mascota
-        const mascotaActiva = tiendaMascotas.getMascotaActiva();
-        if (mascotaActiva) {
-            const mascota = tiendaMascotas.mascotas.find(m => m.id === mascotaActiva);
-            const frases = [
-                '✨ ¡Sigue brillando!',
-                '🌟 Eres increíble',
-                '💪 ¡Tú puedes!',
-                '🎯 Enfócate en tus sueños',
-                '🔥 ¡Nunca te rindas!',
-                '🌈 Hoy es tu día',
-                '⭐ Brilla con luz propia'
-            ];
-            const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-            tiendaMascotas.mostrarMensaje(fraseAleatoria, 'info');
-        }
-    }
-});
